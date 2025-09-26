@@ -38,4 +38,4 @@ This game was designed to showcase **Python branching and decision-making struct
 2. Save the game file as `college_life_game.py`.  
 3. Open a terminal or command prompt and run:  
    ```bash
-   python college_life_game.py
+   python [username]_assignment_3.py
