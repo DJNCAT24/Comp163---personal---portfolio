@@ -63,3 +63,31 @@ elif choice == "C":
 else:
     print("Invalid course load option chosen. No changes made.")
 print("-" * 50)
+
+# --- Step 3: Study Strategy Decision (membership + logical operators) ---
+available_subjects = ["Programming", "Math", "English", "History"]
+print("Choose a subject to focus on this semester:")
+print("Options:", ", ".join(available_subjects))
+subject_choice = input("Your subject choice: ").strip().title()
+
+if subject_choice not in available_subjects:
+    print("Invalid subject chosen. No study strategy applied.")
+else:
+    print(f"You chose to focus on {subject_choice}.")
+    if (subject_choice == "Programming" and study_hours >= 25) or (current_gpa >= 3.0 and subject_choice == "Math"):
+        current_gpa += 0.15
+        social_points -= 5
+        print("Your focused effort paid off academically, but you socialized less.")
+    elif subject_choice == "English" or subject_choice == "History":
+        current_gpa += 0.07
+        if study_hours < 10:
+            social_points += 8
+            stress_level -= 3
+            print("Less study time allowed more social activities.")
+        else:
+            social_points -= 2
+            print("Study commitment reduced social time slightly.")
+    else:
+        current_gpa += 0.05
+        print("Small improvement from extra focus.")
+print("-" * 50)
