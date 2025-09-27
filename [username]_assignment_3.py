@@ -91,3 +91,88 @@ else:
         current_gpa += 0.05
         print("Small improvement from extra focus.")
 print("-" * 50)
+
+# --- Step 4: Final Semester Assessment (use identity ops, nested ifs, multiple endings) ---
+print("Final assessment time! Choose how you want to finish the semester:")
+print("1) Prioritize grades")
+print("2) Prioritize social life")
+print("3) Balance both")
+final_choice = input("Enter 1, 2, or 3: ").strip()
+
+if final_choice not in ["1", "2", "3"]:
+    ending = "Invalid final input - No Change"
+else:
+    if type(final_choice) is str and final_choice is not None:
+        if final_choice == "1":
+            if current_gpa >= 3.3:
+                current_gpa += 0.2
+                study_hours += 10
+                stress_level += 10
+                ending = "Dean's List"
+            else:
+                current_gpa += 0.1
+                stress_level += 15
+                ending = "Academic Push"
+        elif final_choice == "2":
+            if social_points >= 60 and stress_level < 70:
+                social_points += 10
+                current_gpa -= 0.1
+                stress_level -= 10
+                ending = "Party Animal"
+            else:
+                social_points += 5
+                current_gpa -= 0.2
+                stress_level -= 5
+                ending = "Social Butterfly (with costs)"
+        elif final_choice == "3":
+            if study_hours >= 30 and social_points >= 40:
+                current_gpa += 0.12
+                social_points += 2
+                stress_level += 2
+                ending = "Well-Rounded Success"
+            elif study_hours < 15 and social_points < 30:
+                current_gpa -= 0.05
+                social_points -= 5
+                stress_level += 8
+                ending = "Burnout Warning"
+            else:
+                current_gpa += 0.05
+                social_points += 0
+                stress_level += 0
+                ending = "Balanced Semester"
+    else:
+        ending = "Invalid final input - No Change"
+
+if current_gpa > 4.0:
+    current_gpa = 4.0
+if current_gpa < 0.0:
+    current_gpa = 0.0
+if stress_level > 100:
+    stress_level = 100
+if stress_level < 0:
+    stress_level = 0
+
+print("-" * 50)
+print("Final results for", student_name)
+print(f"  Final GPA: {current_gpa:.2f}")
+print(f"  Final Study Hours: {study_hours}")
+print(f"  Final Social Points: {social_points}")
+print(f"  Final Stress Level: {stress_level}")
+print(f"  Ending achieved: {ending}")
+
+if ending == "Dean's List":
+    print("Congrats! Your dedication led to top academic honors.")
+elif ending == "Academic Push":
+    print("You improved academically but at the cost of higher stress.")
+elif ending == "Party Animal":
+    print("Fun times! But watch for academic consequences.")
+elif ending == "Social Butterfly (with costs)":
+    print("You had a busy social semester; GPA suffered a bit.")
+elif ending == "Well-Rounded Success":
+    print("You managed a great balance between study and life.")
+elif ending == "Burnout Warning":
+    print("Danger! Reassess workload and self-care next semester.")
+elif ending == "Balanced Semester":
+    print("Steady outcomes; room to optimize next term.")
+else:
+    print("No clear outcome — consider making stronger choices next semester.")
